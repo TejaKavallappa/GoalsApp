@@ -1,0 +1,22 @@
+<%= @user.username %>
+
+<ul>Goals
+  <% @goals.each do |goal| %>
+    <li>
+      <%= goal.title %>
+      <%= button_to "Edit", goaling_url, method: :patch  %>
+    </li>
+  <% end %>
+</ul>
+<br>
+New Goal
+<br>
+<form action="<%=goalings_url%>" method="post">
+  <input type="hidden" name="authenticity_token" value= "<%=form_authenticity_token%>">
+
+  <label for="Goal">Goal
+    <input type="text" name="goal[title]" value="">
+  </label>
+
+  <input type="submit" value="New Goal">
+</form>
